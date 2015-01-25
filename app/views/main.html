@@ -1,1 +1,26 @@
-<h1>Hello, world!</h1>
+<div class="jumbotron">
+  <div class="container">
+    <h1>C# logging simplified.</h1>
+    <p class="lead">Woodchuck is the best logger in the world, duh.</p>
+    <p><a class="btn btn-lg btn-info" ng-href="#/get-started"><span class="glyphicon glyphicon-save"></span> Get Woodchuck</a></p>
+  </div>
+</div>
+<div class="container">
+  <h2>Install Woodchuck</h2>
+  <p>Just install it, man.</p>
+  <pre><code>PM&gt; Install-Package woodchuck</code></pre>
+  <p>Then just add it into your stuff!</p>
+  <pre><code>public static void Main(string[] args)
+{
+    // how this dependency is constructed/injected will vary by project
+    ILoggingContextProvider contextProvider = new AppLoggingContextProvider();
+    ILogger logger = new AggregateLogger(
+            contextProvider,
+            new AuditOnlyLogger(contextProvider),
+            new Log4NetLogger(contextProvider));
+
+    logger.Info("Test message", new { username = "testusername" });
+
+    logger.Audit("Test audit message");
+}</code></pre>
+</div>
